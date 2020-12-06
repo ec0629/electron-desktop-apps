@@ -1,12 +1,10 @@
 {
-  "name": "electron-desktop-apps",
+  "name": "basic-electron-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "electron": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint --init"
+    "electron": "electron ."
   },
   "keywords": [],
   "author": "",
