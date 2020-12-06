@@ -12,6 +12,17 @@
       <label>Select a video</label>
       <input type="file" accept="video/*" />
     </div>
+    <button type="submit">Get Info</button>
   </form>
+
+  <script>
+    document
+    .querySelector('form')
+    .addEventListener('submit', (e) => {
+      e.preventDefault();
+      debugger;
+      const file = document.querySelector('input').files[0];
+    });
+  </script>
 </body>
 </html>
