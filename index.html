@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <h1>Video Info</h1>
   <form>
@@ -16,13 +18,17 @@
   </form>
 
   <script>
+    const electron = require('electron');
+    const { ipcRenderer } = electron;
+
     document
-    .querySelector('form')
-    .addEventListener('submit', (e) => {
-      e.preventDefault();
-      debugger;
-      const file = document.querySelector('input').files[0];
-    });
+      .querySelector('form')
+      .addEventListener('submit', (e) => {
+        e.preventDefault();
+        debugger;
+        const file = document.querySelector('input').files[0];
+      });
   </script>
 </body>
+
 </html>
