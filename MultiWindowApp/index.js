@@ -39,15 +39,7 @@ const menuTemplate = [
           createAddWindow();
         },
       },
-      {
-        label: 'Quit',
-        accelerator: isMac
-          ? 'Command+Q'
-          : 'Ctrl+Q',
-        click() {
-          app.quit();
-        },
-      },
+      { role: 'quit' },
     ],
   },
 ];
@@ -60,15 +52,8 @@ if (process.env.NODE_ENV !== 'production') {
   menuTemplate.push({
     label: 'View',
     submenu: [
-      {
-        label: 'Toggle Developer Tools',
-        accelerator: isMac
-          ? 'Command+Alt+I'
-          : 'Ctrl+Shift+I',
-        click(item, focusedWindow) {
-          focusedWindow.toggleDevTools();
-        },
-      },
+      { role: 'reload' },
+      { role: 'toggleDevTools' },
     ],
   });
 }
