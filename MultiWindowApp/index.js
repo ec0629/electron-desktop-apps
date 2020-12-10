@@ -42,6 +42,23 @@ if (isMac) {
   menuTemplate.unshift({});
 }
 
+if (process.env.NODE_ENV !== 'production') {
+  menuTemplate.push({
+    label: 'View',
+    submenu: [
+      {
+        label: 'Toggle Developer Tools',
+        accelerator: isMac
+          ? 'Command+Alt+I'
+          : 'Ctrl+Shift+I',
+        click(item, focusedWindow) {
+          focusedWindow.toggleDevTools();
+        },
+      },
+    ],
+  });
+}
+
 app.on('ready', () => {
   mainWindow = new BrowserWindow();
   mainWindow.loadURL(`file://${__dirname}/main.html`);
