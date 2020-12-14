@@ -9,7 +9,7 @@ export default () => {
           to="/settings"
           className="brand-logo right"
           style={{cursor: 'pointer'}}>
-            <i className="material-icons"></i>
+            <i className="material-icons">settings</i>
         </Link>
         <ul>
           <li>

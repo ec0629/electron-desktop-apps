@@ -72,3 +72,5 @@ class TasksIndex extends Component {
     )
   }
 }
+
+export default TasksIndex;
