@@ -6,6 +6,8 @@ class TimerTray {
     this.tray = new Tray(iconPath)
     this.mainWindow = mainWindow;
     this.onClick = this.onClick.bind(this);
+    
+    this.tray.setToolTip('Timer App');
     this.tray.on('click', this.onClick);
   }
 
