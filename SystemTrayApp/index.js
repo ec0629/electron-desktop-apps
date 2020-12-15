@@ -1,5 +1,6 @@
 const electron = require('electron');
 const path = require('path');
+const TimerTray = require('./app/TimerTray');
 
 const { app, BrowserWindow, Tray } = electron;
 
@@ -25,24 +26,5 @@ app.on('ready', () => {
     : 'iconTemplate.png';
   const iconPath = path.join(__dirname, 'src/assets', iconName);
   
-  tray = new Tray(iconPath);
-  tray.on('click', (event, { x, y }) => {
-    const { height, width } = mainWindow.getBounds();
-    
-    if (mainWindow.isVisible()) {
-      mainWindow.hide();
-    } else {
-      const yPosition = process.platform === 'darwin'
-        ? y
-        : y - height;
-
-      mainWindow.setBounds({
-        x: Math.floor(x - (width / 2)),
-        y: yPosition,
-        height,
-        width,
-      });
-      mainWindow.show();
-    }
-  });
+  tray = new TimerTray(iconPath, mainWindow);
 });
