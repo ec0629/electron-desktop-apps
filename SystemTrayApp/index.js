@@ -2,12 +2,16 @@ const electron = require('electron');
 const path = require('path');
 const TimerTray = require('./app/TimerTray');
 
-const { app, BrowserWindow, Tray } = electron;
+const { app, BrowserWindow } = electron;
 
 let mainWindow;
 let tray;
 
 app.on('ready', () => {
+  if (process.platform === 'darwin') {
+    app.dock.hide();
+  }
+  
   mainWindow = new BrowserWindow({
     webPreferences: {
       contextIsolation: false,
