@@ -1,35 +1,26 @@
 const electron = require('electron');
+const path = require('path');
+const MainWindow = require('./MainWindow');
+
 const { app, Menu, Tray } = electron;
 
 class TimerTray {
-  constructor(iconPath, mainWindow) {
+  constructor() {
+    const iconName = process.platform === 'win32'
+      ? 'windows-icon.png'
+      : 'iconTemplate.png';
+    const iconPath = path.join(__dirname, '../src/assets', iconName);
     this.tray = new Tray(iconPath)
-    this.mainWindow = mainWindow;
+    this.mainWindow = new MainWindow();
+    this.windowVisibility = this.mainWindow.isVisible();
     
     this.tray.setToolTip('Timer App');
     this.tray.on('click', this.onClick.bind(this));
     this.tray.on('right-click', this.onRightClick.bind(this));
   }
 
-  onClick(event, { x, y }) {
-    const { mainWindow } = this;
-    const { height, width } = mainWindow.getBounds();
-    
-    if (mainWindow.isVisible()) {
-      mainWindow.hide();
-    } else {
-      const yPosition = process.platform === 'darwin'
-        ? y
-        : y - height;
-
-      mainWindow.setBounds({
-        x: Math.floor(x - (width / 2)),
-        y: yPosition,
-        height,
-        width,
-      });
-      mainWindow.show();
-    }
+  onClick(event, bounds) {
+    this.mainWindow.toggleWindowVisibility(bounds);
   }
 
   onRightClick() {
