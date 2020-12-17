@@ -3,7 +3,7 @@ const path = require('path');
 const TimerTray = require('./app/TimerTray');
 const MainWindow = require('./app/MainWindow');
 
-const { app } = electron;
+const { app, ipcMain } = electron;
 
 let tray;
 
@@ -21,4 +21,8 @@ app.on('ready', () => {
   const iconPath = path.join(__dirname, 'src/assets', iconName);
   
   tray = new TimerTray(iconPath, mainWindow);
+});
+
+ipcMain.on('update-timer', (event, timeLeft) => {
+  tray.setTitle(timeLeft);
 });

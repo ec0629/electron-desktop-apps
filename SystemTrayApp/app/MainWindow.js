@@ -7,6 +7,7 @@ class MainWindow {
       webPreferences: {
         contextIsolation: false,
         nodeIntegration: true,
+        backgroundThrottling: false,
       },
       height: 500,
       width: 300,

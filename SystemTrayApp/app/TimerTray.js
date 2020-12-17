@@ -13,6 +13,10 @@ class TimerTray {
     this.tray.on('right-click', this.onRightClick.bind(this));
   }
 
+  setTitle(timeLeft) {
+    this.tray.setTitle(timeLeft);
+  }
+
   onClick(event, bounds) {
     this.mainWindow.toggleWindowVisibility(bounds);
   }
