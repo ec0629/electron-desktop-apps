@@ -1,17 +1,11 @@
 const electron = require('electron');
-const path = require('path');
-const MainWindow = require('./MainWindow');
 
 const { app, Menu, Tray } = electron;
 
 class TimerTray {
-  constructor() {
-    const iconName = process.platform === 'win32'
-      ? 'windows-icon.png'
-      : 'iconTemplate.png';
-    const iconPath = path.join(__dirname, '../src/assets', iconName);
+  constructor(iconPath, mainWindow) {
     this.tray = new Tray(iconPath)
-    this.mainWindow = new MainWindow();
+    this.mainWindow = mainWindow;
     this.windowVisibility = this.mainWindow.isVisible();
     
     this.tray.setToolTip('Timer App');

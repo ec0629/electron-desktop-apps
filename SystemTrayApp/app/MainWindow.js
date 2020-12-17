@@ -2,7 +2,7 @@ const electron = require('electron');
 const { BrowserWindow } = electron;
 
 class MainWindow {
-  constructor() {
+  constructor(url) {
     const window = new BrowserWindow({
       webPreferences: {
         contextIsolation: false,
@@ -15,7 +15,7 @@ class MainWindow {
       show: false,
     });
 
-    window.loadURL(`file://${__dirname}/../src/index.html`);
+    window.loadURL(url);
 
     this.window = window;
     this.onBlur = this.onBlur.bind(this);
